@@ -32,7 +32,7 @@ pipeline {
       }
     }
 
-    stage('Terraform Apply (Infra First)') {
+    stage('Terraform Apply (Infra)') {
       when {
         expression { params.ACTION == 'apply' }
       }
@@ -65,7 +65,7 @@ pipeline {
       }
     }
 
-    🔹 stage('Deploy to ECS') {
+    stage('Deploy to ECS') {
       when {
         expression { params.ACTION == 'apply' }
       }
@@ -106,10 +106,10 @@ pipeline {
 
   post {
     success {
-      echo "Terraform ${params.ACTION} completed successfully"
+      echo "Pipeline completed successfully (ACTION=${params.ACTION})"
     }
     failure {
-      echo "Terraform ${params.ACTION} failed"
+      echo "Pipeline failed (ACTION=${params.ACTION})"
     }
   }
 }
