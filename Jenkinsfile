@@ -10,9 +10,9 @@ pipeline {
   }
 
   environment {
-    TF_DIR     = 'terraform'
-    APP_DIR    = 'app'
-    AWS_REGION = 'ap-south-1'
+    TF_DIR      = 'terraform'
+    APP_DIR     = 'app'
+    AWS_REGION  = 'ap-south-1'
     TF_CLI_ARGS = '-no-color'
   }
 
@@ -60,6 +60,33 @@ pipeline {
 
             docker build -t ${ecr}:latest ${APP_DIR}
             docker push ${ecr}:latest
+          """
+        }
+      }
+    }
+
+    🔹 stage('Deploy to ECS') {
+      when {
+        expression { params.ACTION == 'apply' }
+      }
+      steps {
+        script {
+          def cluster = sh(
+            script: "cd terraform && terraform output -raw ecs_cluster_name",
+            returnStdout: true
+          ).trim()
+
+          def service = sh(
+            script: "cd terraform && terraform output -raw ecs_service_name",
+            returnStdout: true
+          ).trim()
+
+          sh """
+            aws ecs update-service \
+              --cluster ${cluster} \
+              --service ${service} \
+              --force-new-deployment \
+              --region ${AWS_REGION}
           """
         }
       }
