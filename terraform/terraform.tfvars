@@ -8,5 +8,5 @@ subnet_ids = [
 ]
 
 security_group_ids = [
-  "sg-086d498926b570b8c"
+  "sg-0286a4f37bc612e43"
 ]
