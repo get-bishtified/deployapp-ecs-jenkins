@@ -144,3 +144,20 @@ Production-ready container deployments
 Secure AWS authentication
 
 Clean, maintainable Jenkins pipelines
+
+---
+## 🎥 Learn With YouTube Tutorials
+
+Each project is **explained step-by-step** on YouTube with visuals and walkthroughs:
+
+🔗 [📺 Bishtify - Build Skills, Not Just Resumes](https://www.youtube.com/@getbishtified) 
+🧠 Subscribe for weekly ML + CloudOps demos.
+
+---
+
+📩 **Contact:**  
+📧 `support@bishtify.com`
+
+🤝 Connect With Me - 📧 [Click here](https://topmate.io/pradeep_singh_bisht)
+🔗 Get Bishtified with:
+Bishtify - Let’s build skills — not just resumes! 🚀
